@@ -1,0 +1,899 @@
+{
+  "team list": {
+    "group": "team",
+    "action": "list",
+    "name": "我的群组列表",
+    "method": "GET",
+    "path": "/open/team/list",
+    "query": [],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": "根据openapi token 获得的用户身份，获取与用户相关的团队列表基础信息。"
+  },
+  "project create": {
+    "group": "project",
+    "action": "create",
+    "name": "创建项目",
+    "method": "POST",
+    "path": "/open/project/add",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"team_id\": \"{{team_id}}\",\r\n\t\n\t\n\t\"project_code\": \"fengtt00x\",\r\n\t\"name\": \"项目名称\",\r\n\t\"intro\": \"项目描述简介\"\r\n}",
+    "desc": ""
+  },
+  "project list": {
+    "group": "project",
+    "action": "list",
+    "name": "我的项目列表",
+    "method": "GET",
+    "path": "/open/project/list",
+    "query": [
+      {
+        "name": "team_code",
+        "desc": "team_id 或 team_code 传一个即可，如都传如则以team_id为准。",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "team_id",
+        "desc": "团队id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "action",
+        "desc": "列表分类：0-3 0全部  1我管理的 2我参与的 3回收站 (例如我是项目管理，那么在我参与中就不会出现。我参与是指我在该项目中是普通成员)",
+        "required": false,
+        "default": "0",
+        "hasDefault": true,
+        "inCodePair": false
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "project info": {
+    "group": "project",
+    "action": "info",
+    "name": "项目详情",
+    "method": "GET",
+    "path": "/open/project/info",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "id 或code传一个即可，如都传如则以id为准。",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "test delete": {
+    "group": "test",
+    "action": "delete",
+    "name": "批量删除自动化测试",
+    "method": "POST",
+    "path": "/open/automated_testing/multi_del",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\": \"{{project_code}}\", \n    \"testing_ids\": [\r\n        \"253afd6271e004\",\r\n        \"253a8d9971e002\"\r\n    ]\r\n}",
+    "desc": ""
+  },
+  "test report-list": {
+    "group": "test",
+    "action": "report-list",
+    "name": "获取测试报告列表",
+    "method": "GET",
+    "path": "/open/automated_testing/report/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "testing_id",
+        "desc": "测试或者套件id 可选 如果job_id和testing_id都未填则获取项目下全部列表",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      },
+      {
+        "name": "project_code",
+        "desc": "可选 传入相关联的三方id project_id和project_code二选一即可.",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "job_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "test report-detail": {
+    "group": "test",
+    "action": "report-detail",
+    "name": "获取测试报告详情",
+    "method": "GET",
+    "path": "/open/automated_testing/report/details",
+    "query": [
+      {
+        "name": "testing_id",
+        "desc": "",
+        "required": true,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      },
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "report_id",
+        "desc": "",
+        "required": true,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      },
+      {
+        "name": "project_code",
+        "desc": "可选 传入相关联的三方id project_id和project_code二选一即可.",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "global-param detail": {
+    "group": "global-param",
+    "action": "detail",
+    "name": "全局参数详情",
+    "method": "GET",
+    "path": "/open/project/global/param/details",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "id和code 传一个即可 id是当前系统的唯一标记，code是第三方平台的唯一标记。",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "global-param save": {
+    "group": "global-param",
+    "action": "save",
+    "name": "保存全局参数",
+    "method": "POST",
+    "path": "/open/project/global/param/save",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\"project_code\": \"{{project_code}}\",\r\n\t\"global_param\": {\r\n\t\t\"header\": {\r\n\t\t\t\"parameter\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"description\": \"\",\r\n\t\t\t\t\t\"field_type\": \"String\",\r\n\t\t\t\t\t\"is_checked\": 1,\r\n\t\t\t\t\t\"key\": \"123\",\r\n\t\t\t\t\t\"value\": \"\",\r\n\t\t\t\t\t\"not_null\": 1,\r\n\t\t\t\t\t\"type\": \"Text\",\r\n\t\t\t\t\t\"param_id\": \"2445c7f638300b\" \n\t\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\t\"query\": {\r\n\t\t\t\"parameter\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"description\": \"\",\r\n\t\t\t\t\t\"field_type\": \"String\",\r\n\t\t\t\t\t\"is_checked\": 1,\r\n\t\t\t\t\t\"key\": \"\",\r\n\t\t\t\t\t\"value\": \"\",\r\n\t\t\t\t\t\"not_null\": 1,\r\n\t\t\t\t\t\"type\": \"Text\",\r\n\t\t\t\t\t\"static\": true,\r\n\t\t\t\t\t\"param_id\": \"24461661b8300d\"\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\t\"body\": {\r\n\t\t\t\"parameter\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"description\": \"认证令牌\",\r\n\t\t\t\t\t\"field_type\": \"String\",\r\n\t\t\t\t\t\"is_checked\": 1,\r\n\t\t\t\t\t\"key\": \"456\",\r\n\t\t\t\t\t\"value\": \"456\",\r\n\t\t\t\t\t\"not_null\": 1,\r\n\t\t\t\t\t\"type\": \"Text\",\r\n\t\t\t\t\t\"param_id\": \"2445c8a078300c\"\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\t\"cookie\": {\r\n\t\t\t\"parameter\": [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"description\": \"\",\r\n\t\t\t\t\t\"field_type\": \"String\",\r\n\t\t\t\t\t\"is_checked\": 1,\r\n\t\t\t\t\t\"key\": \"12312\",\r\n\t\t\t\t\t\"value\": \"\",\r\n\t\t\t\t\t\"not_null\": 1,\r\n\t\t\t\t\t\"sort\": 0\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t},\r\n\t\t\"auth\": {\r\n\t\t\t\"type\": \"basic\",\r\n\t\t\t\"kv\": {\r\n\t\t\t\t\"key\": \"\",\r\n\t\t\t\t\"value\": \"\"\r\n\t\t\t},\r\n\t\t\t\"bearer\": {\r\n\t\t\t\t\"key\": \"\"\r\n\t\t\t},\r\n\t\t\t\"basic\": {\r\n\t\t\t\t\"username\": \"231123213\",\r\n\t\t\t\t\"password\": \"\"\r\n\t\t\t},\r\n\t\t\t\"digest\": {\r\n\t\t\t\t\"username\": \"\",\r\n\t\t\t\t\"password\": \"\",\r\n\t\t\t\t\"realm\": \"\",\r\n\t\t\t\t\"nonce\": \"\",\r\n\t\t\t\t\"algorithm\": \"\",\r\n\t\t\t\t\"qop\": \"\",\r\n\t\t\t\t\"nc\": \"\",\r\n\t\t\t\t\"cnonce\": \"\",\r\n\t\t\t\t\"opaque\": \"\"\r\n\t\t\t},\r\n\t\t\t\"hawk\": {\r\n\t\t\t\t\"authId\": \"\",\r\n\t\t\t\t\"authKey\": \"\",\r\n\t\t\t\t\"algorithm\": \"\",\r\n\t\t\t\t\"user\": \"\",\r\n\t\t\t\t\"nonce\": \"\",\r\n\t\t\t\t\"extraData\": \"\",\r\n\t\t\t\t\"app\": \"\",\r\n\t\t\t\t\"delegation\": \"\",\r\n\t\t\t\t\"timestamp\": \"\",\r\n\t\t\t\t\"includePayloadHash\": 0\r\n\t\t\t},\r\n\t\t\t\"awsv4\": {\r\n\t\t\t\t\"accessKey\": \"\",\r\n\t\t\t\t\"secretKey\": \"\",\r\n\t\t\t\t\"region\": \"\",\r\n\t\t\t\t\"service\": \"\",\r\n\t\t\t\t\"sessionToken\": \"\",\r\n\t\t\t\t\"addAuthDataToQuery\": 0\r\n\t\t\t},\r\n\t\t\t\"ntlm\": {\r\n\t\t\t\t\"username\": \"\",\r\n\t\t\t\t\"password\": \"\",\r\n\t\t\t\t\"domain\": \"\",\r\n\t\t\t\t\"workstation\": \"\",\r\n\t\t\t\t\"disableRetryRequest\": 0\r\n\t\t\t},\r\n\t\t\t\"edgegrid\": {\r\n\t\t\t\t\"accessToken\": \"\",\r\n\t\t\t\t\"clientToken\": \"\",\r\n\t\t\t\t\"clientSecret\": \"\",\r\n\t\t\t\t\"nonce\": \"\",\r\n\t\t\t\t\"timestamp\": \"\",\r\n\t\t\t\t\"baseURi\": \"\",\r\n\t\t\t\t\"headersToSign\": \"\"\r\n\t\t\t},\r\n\t\t\t\"oauth1\": {\r\n\t\t\t\t\"consumerKey\": \"\",\r\n\t\t\t\t\"consumerSecret\": \"\",\r\n\t\t\t\t\"signatureMethod\": \"\",\r\n\t\t\t\t\"addEmptyParamsToSign\": 0,\r\n\t\t\t\t\"includeBodyHash\": 0,\r\n\t\t\t\t\"addParamsToHeader\": 0,\r\n\t\t\t\t\"realm\": \"\",\r\n\t\t\t\t\"version\": \"\",\r\n\t\t\t\t\"nonce\": \"\",\r\n\t\t\t\t\"timestamp\": \"\",\r\n\t\t\t\t\"verifier\": \"\",\r\n\t\t\t\t\"callback\": \"\",\r\n\t\t\t\t\"tokenSecret\": \"\",\r\n\t\t\t\t\"token\": \"\"\r\n\t\t\t}\r\n\t\t},\r\n\t\t\"pre_tasks\": [\r\n\t\t\t{\r\n\t\t\t\t\"type\": \"customScript\",\r\n\t\t\t\t\"name\": \"自定义脚本\",\r\n\t\t\t\t\"enabled\": 1,\r\n\t\t\t\t\"data\": \"\"\r\n\t\t\t}\r\n\t\t],\r\n\t\t\"post_tasks\": [\r\n\t\t\t{\r\n\t\t\t\t\"type\": \"customScript\",\r\n\t\t\t\t\"name\": \"自定义脚本\",\r\n\t\t\t\t\"enabled\": 1,\r\n\t\t\t\t\"data\": \"\"\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n}",
+    "desc": ""
+  },
+  "attribute update": {
+    "group": "attribute",
+    "action": "update",
+    "name": "更新接口属性",
+    "method": "POST",
+    "path": "/open/project/customattribute/up",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"attribute_id\": \"586a16419c01000\",\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\n\t\"field_name\": \"@cname()\",\r\n\t\"field_type\": 1,\r\n\t\"enable\": 1,\r\n\t\"tooltip\": \"222xxxxxx\",\r\n\t\"sort\": 1,\r\n\t\"extra\": [\r\n\t\t{\r\n\t\t\t\"key\": \"1746779506997202966\",\r\n\t\t\t\"label\": \"\",\r\n\t\t\t\"value\": \"21\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"key\": \"1746779506997202977\",\r\n\t\t\t\"label\": \"\",\r\n\t\t\t\"value\": \"222\"\r\n\t\t}\r\n\t]\r\n}",
+    "desc": ""
+  },
+  "attribute create": {
+    "group": "attribute",
+    "action": "create",
+    "name": "创建接口属性",
+    "method": "POST",
+    "path": "/open/project/customattribute/add",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\", \n    \n    \"field_name\": \"@name()\",\r\n    \"field_type\": 1,\r\n    \"tooltip\": \"222\",\r\n    \"sort\": 1,\r\n    \"enable\": 1,\r\n    \n    \"extra\": [\r\n        {\r\n            \"label\": \"\",\r\n            \"value\": \"21\",\r\n            \"key\": \"1746779506997202966\"\r\n        },\r\n        {\r\n            \"label\": \"\",\r\n            \"value\": \"222\",\r\n            \"key\": \"1746779506997202977\"\r\n        }\r\n    ]\r\n}",
+    "desc": ""
+  },
+  "attribute list": {
+    "group": "attribute",
+    "action": "list",
+    "name": "接口属性列表",
+    "method": "GET",
+    "path": "/open/project/customattribute/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "attribute detail": {
+    "group": "attribute",
+    "action": "detail",
+    "name": "接口属性详情",
+    "method": "GET",
+    "path": "/open/project/customattribute/details",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "attribute_id",
+        "desc": "",
+        "required": true,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "attribute delete": {
+    "group": "attribute",
+    "action": "delete",
+    "name": "删除接口属性",
+    "method": "POST",
+    "path": "/open/project/customattribute/del",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\n\t\"attribute_id\": \"586a16419c01000\"\r\n}",
+    "desc": ""
+  },
+  "model create": {
+    "group": "model",
+    "action": "create",
+    "name": "创建模型或目录",
+    "method": "POST",
+    "path": "/open/models/create",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\": \"{{project_code}}\",\r\n    \"model_type\": \"folder\",\r\n    \"name\": \"B\",\r\n    \"display_name\": \"\",\r\n    \"description\": \"\",\r\n    \"parent_id\": \"0\",\r\n    \"parent_name\": \"A\",\r\n    \"schema\": {\r\n        \"type\": \"object\",\r\n        \"properties\": {}\r\n    }\r\n}",
+    "desc": ""
+  },
+  "model update": {
+    "group": "model",
+    "action": "update",
+    "name": "修改模型或目录",
+    "method": "POST",
+    "path": "/open/models/update",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"model_id\":\"\",\r\n    \"original_name\":\"A\",\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\": \"{{project_code}}\",\r\n    \"model_type\": \"folder\",\r\n    \"name\": \"B\",\r\n    \"display_name\": \"1\",\r\n    \"description\": \"1\",\r\n    \"parent_id\": \"2\", \r\n    \"parent_name\":\"A\",\r\n    \"schema\": {\r\n        \"type\": \"object\",\r\n        \"properties\": {}\r\n    }\r\n}",
+    "desc": ""
+  },
+  "api detail": {
+    "group": "api",
+    "action": "detail",
+    "name": "获取多条接口详情",
+    "method": "POST",
+    "path": "/open/apis/details",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\":\"{{project_code}}\",  \n    \"target_ids\": [\r\n        \"26d3cab4f83002\"\r\n    ]\r\n}",
+    "desc": ""
+  },
+  "api list": {
+    "group": "api",
+    "action": "list",
+    "name": "接口列表（简约结构）",
+    "method": "GET",
+    "path": "/open/apis/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "项目ID（16进制雪花）",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "项目Code，project_id和project_code二选一即可. 优先project_id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "api update": {
+    "group": "api",
+    "action": "update",
+    "name": "修改接口",
+    "method": "POST",
+    "path": "/open/apis/update",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n  \"project_id\": \"{{project_id}}\",\n  \"project_code\":\"{{project_code}}\",  \n  \"target_id\": \"26d3cab4f83002\",\n  \"is_force\":1,\n  \"target_type\": \"api\",\n  \"parent_id\": \"0\",\n  \"name\": \"新建接口\",\n  \"mark_id\": \"1\",\n  \"method\": \"GET\", \n  \"url\": \"\", \n  \"protocol\": \"http/1.1\",\n  \"description\": \"\",\n  \"request\": {\n    \"auth\": {\n      \"type\": \"noauth\",\n      \"kv\": {\n        \"key\": \"\",\n        \"value\": \"\"\n      },\n      \"bearer\": {\n        \"key\": \"\"\n      },\n      \"basic\": {\n        \"username\": \"\",\n        \"password\": \"\"\n      },\n      \"digest\": {\n        \"username\": \"\",\n        \"password\": \"\",\n        \"realm\": \"\",\n        \"nonce\": \"\",\n        \"algorithm\": \"\",\n        \"qop\": \"\",\n        \"nc\": \"\",\n        \"cnonce\": \"\",\n        \"opaque\": \"\"\n      },\n      \"hawk\": {\n        \"authId\": \"\",\n        \"authKey\": \"\",\n        \"algorithm\": \"\",\n        \"user\": \"\",\n        \"nonce\": \"\",\n        \"extraData\": \"\",\n        \"app\": \"\",\n        \"delegation\": \"\",\n        \"timestamp\": \"\",\n        \"includePayloadHash\": 0\n      },\n      \"awsv4\": {\n        \"accessKey\": \"\",\n        \"secretKey\": \"\",\n        \"region\": \"\",\n        \"service\": \"\",\n        \"sessionToken\": \"\",\n        \"addAuthDataToQuery\": 0\n      },\n      \"ntlm\": {\n        \"username\": \"\",\n        \"password\": \"\",\n        \"domain\": \"\",\n        \"workstation\": \"\",\n        \"disableRetryRequest\": 0\n      },\n      \"edgegrid\": {\n        \"accessToken\": \"\",\n        \"clientToken\": \"\",\n        \"clientSecret\": \"\",\n        \"nonce\": \"\",\n        \"timestamp\": \"\",\n        \"baseURi\": \"\",\n        \"headersToSign\": \"\"\n      },\n      \"oauth1\": {\n        \"consumerKey\": \"\",\n        \"consumerSecret\": \"\",\n        \"signatureMethod\": \"\",\n        \"addEmptyParamsToSign\": 0,\n        \"includeBodyHash\": 0,\n        \"addParamsToHeader\": 0,\n        \"realm\": \"\",\n        \"version\": \"\",\n        \"nonce\": \"\",\n        \"timestamp\": \"\",\n        \"verifier\": \"\",\n        \"callback\": \"\",\n        \"tokenSecret\": \"\",\n        \"token\": \"\"\n      }\n    },\n    \"body\": {\n      \"mode\": \"none\",\n      \"parameter\": [],\n      \"raw\": \"\",\n      \"raw_parameter\": [],\n      \"raw_schema\": {\n        \"type\": \"object\"\n      },\n      \"binary\": null\n    },\n    \"pre_tasks\": [],\n    \"post_tasks\": [],\n    \"header\": {\n      \"parameter\": [\n        {\n          \"param_id\": \"26d3caf4f83001\",\n          \"description\": \"\",\n          \"field_type\": \"string\",\n          \"is_checked\": 1,\n          \"key\": \"\",\n          \"not_null\": 1,\n          \"value\": \"\"\n        }\n      ]\n    },\n    \"query\": {\n      \"parameter\": []\n    },\n    \"cookie\": {\n      \"parameter\": []\n    },\n    \"restful\": {\n      \"parameter\": []\n    }\n  },\n  \"response\": {\n    \"example\": [\n      {\n        \"example_id\": \"1\",\n        \"raw\": \"\",\n        \"raw_parameter\": [],\n        \"expect\": {\n          \"name\": \"成功\",\n          \"is_default\": 1,\n          \"code\": \"200\",\n          \"content_type\": \"json\",\n          \"verify_type\": \"schema\",\n          \"mock\": \"\",\n          \"schema\": {}\n        }\n      },\n      {\n        \"example_id\": \"2\",\n        \"raw\": \"\",\n        \"raw_parameter\": [],\n        \"expect\": {\n          \"name\": \"失败\",\n          \"is_default\": -1,\n          \"code\": \"404\",\n          \"content_type\": \"json\",\n          \"verify_type\": \"schema\",\n          \"mock\": \"\",\n          \"schema\": {}\n        }\n      }\n    ],\n    \"is_check_result\": 1\n  },\n  \"attribute_info\": {},\n  \"tags\": [\n    \"pipi\",\n    \"pizi1\",\n    \"pizi2\",\n    \"pizi3\"\n  ]\n}",
+    "desc": "入参内容与创建接口一致，target_id字段必填\n\n**** 在调用修改接口时，非必填字段不传会按照更改为默认值处理。所以调用修改接口前，请调用详情接口，在详情基础上修改。"
+  },
+  "api delete": {
+    "group": "api",
+    "action": "delete",
+    "name": "批量删除接口",
+    "method": "POST",
+    "path": "/open/apis/delete",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\":\"{{project_code}}\",  \n    \"target_ids\": [\r\n        \"26d3cab4f83002\"\r\n    ]\r\n}",
+    "desc": ""
+  },
+  "api sample-list": {
+    "group": "api",
+    "action": "sample-list",
+    "name": "列出接口用例清单",
+    "method": "GET",
+    "path": "/open/apis/sample",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "项目Code，project_id和project_code二选一即可. 优先project_id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "sample_ids",
+        "desc": "接口用例sample_id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      },
+      {
+        "name": "target_ids",
+        "desc": "接口target_id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "api sample-create": {
+    "group": "api",
+    "action": "sample-create",
+    "name": "创建接口用例",
+    "method": "POST",
+    "path": "/open/apis/sample/create",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\":\"{{project_code}}\",  \n    \"target_id\": \"98f249bbf2002\",\r\n    \"type\": \"sample\",\r\n    \"name\": \"测试用例\",\r\n    \"description\": \"\",\r\n    \"method\": \"GET\",\r\n    \"url\": \"/anything/{name}/{age}/{nice}\",\r\n    \"parent_id\": \"0\",\r\n    \"protocol\": \"http/1.1\",\r\n    \"request\": {\r\n        \"auth\": {\r\n            \"type\": \"oauth2\",\r\n            \"kv\": {\r\n                \"key\": \"\",\r\n                \"value\": \"\",\r\n                \"in\": \"header\"\r\n            },\r\n            \"bearer\": {\r\n                \"key\": \"\"\r\n            },\r\n            \"basic\": {\r\n                \"username\": \"\",\r\n                \"password\": \"\"\r\n            },\r\n            \"digest\": {\r\n                \"username\": \"\",\r\n                \"password\": \"\",\r\n                \"realm\": \"\",\r\n                \"nonce\": \"\",\r\n                \"algorithm\": \"MD5\",\r\n                \"qop\": \"\",\r\n                \"nc\": \"\",\r\n                \"cnonce\": \"\",\r\n                \"opaque\": \"\"\r\n            },\r\n            \"hawk\": {\r\n                \"authId\": \"\",\r\n                \"authKey\": \"\",\r\n                \"algorithm\": \"\",\r\n                \"user\": \"\",\r\n                \"nonce\": \"\",\r\n                \"extraData\": \"\",\r\n                \"default\": \"\",\r\n                \"delegation\": \"\",\r\n                \"timestamp\": \"\",\r\n                \"includePayloadHash\": false\r\n            },\r\n            \"awsv4\": {\r\n                \"accessKey\": \"\",\r\n                \"secretKey\": \"\",\r\n                \"region\": \"\",\r\n                \"service\": \"\",\r\n                \"sessionToken\": \"\",\r\n                \"addAuthDataToQuery\": false\r\n            },\r\n            \"ntlm\": {\r\n                \"username\": \"\",\r\n                \"password\": \"\",\r\n                \"entity\": \"\",\r\n                \"workstation\": \"\",\r\n                \"disableRetryRequest\": false\r\n            },\r\n            \"edgegrid\": {\r\n                \"accessToken\": \"\",\r\n                \"clientToken\": \"\",\r\n                \"clientSecret\": \"\",\r\n                \"nonce\": \"\",\r\n                \"timestamp\": \"\",\r\n                \"baseURi\": \"\",\r\n                \"headersToSign\": \"\"\r\n            },\r\n            \"oauth1\": {\r\n                \"consumerKey\": \"\",\r\n                \"consumerSecret\": \"\",\r\n                \"signatureMethod\": \"HMAC-SHA1\",\r\n                \"addEmptyParamsToSign\": true,\r\n                \"includeBodyHash\": true,\r\n                \"addParamsToHeader\": false,\r\n                \"disableHeaderEncoding\": false,\r\n                \"realm\": \"\",\r\n                \"version\": \"1.0\",\r\n                \"nonce\": \"\",\r\n                \"timestamp\": \"\",\r\n                \"verifier\": \"\",\r\n                \"callback\": \"\",\r\n                \"tokenSecret\": \"\",\r\n                \"token\": \"\"\r\n            },\r\n            \"oauth2\": {\r\n                \"addTokenTo\": \"queryParams\",\r\n                \"access_token\": \"11112222\",\r\n                \"headerPrefix\": \"Bearer\",\r\n                \"grant_type\": \"authorization_code\",\r\n                \"redirect_uri\": \"4444\",\r\n                \"authUrl\": \"2222\",\r\n                \"accessTokenUrl\": \"333\",\r\n                \"clientId\": \"555\",\r\n                \"clientSecret\": \"6666\",\r\n                \"username\": \"\",\r\n                \"password\": \"\",\r\n                \"challengeAlgorithm\": \"S256\",\r\n                \"code_verifier\": \"Bearer\",\r\n                \"scope\": \"8888\",\r\n                \"state\": \"999\",\r\n                \"client_authentication\": \"header\",\r\n                \"refreshTokenUrl\": \"\",\r\n                \"authRequestParams\": [],\r\n                \"tokenRequestParams\": [],\r\n                \"refreshRequestParams\": []\r\n            },\r\n            \"jwt\": {\r\n                \"addTokenTo\": \"header\",\r\n                \"algorithm\": \"HS256\",\r\n                \"secret\": \"\",\r\n                \"isSecretBase64Encoded\": false,\r\n                \"payload\": \"\",\r\n                \"headerPrefix\": \"Bearer\",\r\n                \"queryParamKey\": \"token\",\r\n                \"header\": \"\"\r\n            },\r\n            \"asap\": {\r\n                \"alg\": \"HS256\",\r\n                \"iss\": \"\",\r\n                \"aud\": \"\",\r\n                \"kid\": \"\",\r\n                \"privateKey\": \"\",\r\n                \"sub\": \"\",\r\n                \"claims\": \"\",\r\n                \"exp\": \"\"\r\n            }\r\n        },\r\n        \"body\": {\r\n            \"mode\": \"form-data\",\r\n            \"parameter\": [\r\n                {\r\n                    \"param_id\": \"19b191d53e2239\",\r\n                    \"description\": \"用于标识用户身份的名称，在系统中具有唯一性。\\n\",\r\n                    \"field_type\": \"string\",\r\n                    \"is_checked\": 1,\r\n                    \"key\": \"username\",\r\n                    \"not_null\": -1,\r\n                    \"value\": \"test_user_2025\",\r\n                    \"content_type\": \"\",\r\n                    \"file_name\": \"\",\r\n                    \"file_base64\": \"\",\r\n                    \"schema\": {\r\n                        \"type\": \"string\"\r\n                    }\r\n                }\r\n            ],\r\n            \"raw\": \"\",\r\n            \"raw_parameter\": [],\r\n            \"raw_schema\": {\r\n                \"type\": \"object\",\r\n                \"properties\": {}\r\n            },\r\n            \"binary\": null\r\n        },\r\n        \"pre_tasks\": [],\r\n        \"post_tasks\": [],\r\n        \"header\": {\r\n            \"parameter\": [\r\n                {\r\n                    \"key\": \"Content-Type\",\r\n                    \"value\": \"application/json\"\r\n                }\r\n            ]\r\n        },\r\n        \"query\": {\r\n            \"query_add_equal\": 1,\r\n            \"parameter\": []\r\n        },\r\n        \"cookie\": {\r\n            \"cookie_encode\": 1,\r\n            \"parameter\": []\r\n        },\r\n        \"restful\": {\r\n            \"parameter\": []\r\n        }\r\n    }\r\n}",
+    "desc": ""
+  },
+  "user info": {
+    "group": "user",
+    "action": "info",
+    "name": "获取个人信息",
+    "method": "GET",
+    "path": "/open/user/info",
+    "query": [],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "mark update": {
+    "group": "mark",
+    "action": "update",
+    "name": "更新接口状态",
+    "method": "POST",
+    "path": "/open/project/mark/up",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\", \n    \n\t\"mark_id\": \"5f2f72760c19000\",\r\n    \"name\": \"222xxxx222\",\r\n    \"color\": \"#ff7600\"\r\n}",
+    "desc": ""
+  },
+  "mark create": {
+    "group": "mark",
+    "action": "create",
+    "name": "创建接口状态",
+    "method": "POST",
+    "path": "/open/project/mark/add",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\", \n    \n    \"name\": \"222xxxx\",\r\n    \"color\": \"#ff7600\"\r\n}",
+    "desc": ""
+  },
+  "mark list": {
+    "group": "mark",
+    "action": "list",
+    "name": "接口状态列表",
+    "method": "GET",
+    "path": "/open/project/mark/list",
+    "query": [
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "mark delete": {
+    "group": "mark",
+    "action": "delete",
+    "name": "删除接口状态",
+    "method": "POST",
+    "path": "/open/project/mark/del",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\n\t\"mark_id\": \"5f2f72760c19000\"\r\n}",
+    "desc": ""
+  },
+  "mark set-default": {
+    "group": "mark",
+    "action": "set-default",
+    "name": "设置默认状态",
+    "method": "POST",
+    "path": "/open/project/mark/set_default",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\", \n    \n    \"field\": \"default_mark\", \n    \"value\": \"2\" \n}",
+    "desc": ""
+  },
+  "server delete": {
+    "group": "server",
+    "action": "delete",
+    "name": "删除服务",
+    "method": "POST",
+    "path": "/open/project/env/server/del",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\"project_code\": \"{{project_code}}\",\r\n\t\"server_id\": \"5b7b66710039000\"\r\n}",
+    "desc": ""
+  },
+  "server list": {
+    "group": "server",
+    "action": "list",
+    "name": "服务列表",
+    "method": "GET",
+    "path": "/open/project/env/server/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "server detail": {
+    "group": "server",
+    "action": "detail",
+    "name": "服务详情",
+    "method": "GET",
+    "path": "/open/project/env/server/details",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "server_id",
+        "desc": "",
+        "required": true,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "server create": {
+    "group": "server",
+    "action": "create",
+    "name": "新增服务",
+    "method": "POST",
+    "path": "/open/project/env/server/add",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\"project_code\": \"{{project_code}}\",\r\n\t\"name\": \"@cname()\"\r\n}",
+    "desc": ""
+  },
+  "server update": {
+    "group": "server",
+    "action": "update",
+    "name": "编辑服务",
+    "method": "POST",
+    "path": "/open/project/env/server/up",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n\t\"project_id\": \"{{project_id}}\",\r\n\t\"project_code\": \"{{project_code}}\",\r\n\t\"server_id\": \"5b7b66710039000\",\r\n\t\"name\": \"@cname()22222\"\r\n}",
+    "desc": ""
+  },
+  "server move": {
+    "group": "server",
+    "action": "move",
+    "name": "移动服务",
+    "method": "POST",
+    "path": "/open/project/env/server/multi_move",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"server_ids\": [\n\t\t\"5b7b6d59f439000\"  \n\t],\n\t\"after_id\": \"5b7901131839000\", \n\t\"before_id\": \"0\" \n}",
+    "desc": ""
+  },
+  "env create": {
+    "group": "env",
+    "action": "create",
+    "name": "添加环境",
+    "method": "POST",
+    "path": "/open/project/env/add",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"name\": \"xxxxx11\",\n\t\"is_private\": -1,\n\t\"server_list\": [\n\t\t{\n\t\t\t\"server_id\": \"225a8bd0dc01000\",\n\t\t\t\"uri\": \"@domain()\"\n\t\t}\n\t],\n\t\"env_var_list\": {\n\t\t\"xx\": {\n\t\t\t\"value\": \"xx\",\n\t\t\t\"description\": \"\"\n\t\t}\n\t}\n}",
+    "desc": ""
+  },
+  "env update": {
+    "group": "env",
+    "action": "update",
+    "name": "更新环境",
+    "method": "POST",
+    "path": "/open/project/env/up",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n\t\"env_id\": \"5b7901131839000\",\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"name\": \"cddd\",\n\t\"is_private\": -1, \n\t\"server_list\": [\n\t\t{\n\t\t\t\"server_id\": \"225a8bd0dc01000\",\n\t\t\t\"uri\": \"@domain()\"\n\t\t},\n\t\t{\n\t\t\t\"server_id\": \"01fd824d5dc01000\",\n\t\t\t\"uri\": \"@domain()\"\n\t\t}\n\t],\n\t\"env_var_list\": {\n\t\t\"xx\": {\n\t\t\t\"value\": \"xx\",\n\t\t\t\"description\": \"\"\n\t\t}\n\t}\n}",
+    "desc": ""
+  },
+  "env delete": {
+    "group": "env",
+    "action": "delete",
+    "name": "删除环境",
+    "method": "POST",
+    "path": "/open/project/env/del",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"env_id\": \"2c2a3cefa801000\"\n}",
+    "desc": ""
+  },
+  "env list": {
+    "group": "env",
+    "action": "list",
+    "name": "环境列表",
+    "method": "GET",
+    "path": "/open/project/env/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "env move": {
+    "group": "env",
+    "action": "move",
+    "name": "移动环境",
+    "method": "POST",
+    "path": "/open/project/env/multi_move",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"env_ids\": [\n\t\t\"1bfe44b2e4025001\"\n\t],\n\t\"after_id\": \"5b7901131839000\", \n\t\"before_id\": \"0\" \n}",
+    "desc": ""
+  },
+  "env detail": {
+    "group": "env",
+    "action": "detail",
+    "name": "环境详情",
+    "method": "GET",
+    "path": "/open/project/env/details",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "env_id",
+        "desc": "",
+        "required": true,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": false
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "test list": {
+    "group": "test",
+    "action": "list",
+    "name": "自动化测试列表",
+    "method": "GET",
+    "path": "/open/automated_testing/list",
+    "query": [
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "api set-mark": {
+    "group": "api",
+    "action": "set-mark",
+    "name": "更新多个接口状态",
+    "method": "POST",
+    "path": "/open/apis/multi_up_mark",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\n    \"project_id\": \"{{project_id}}\",\n    \n    \"mark_id\": \"2\", \n    \"target_ids\": [\n        \"23376cc0b4b011\",\n        \"122419abb4b003\"\n    ] \n}",
+    "desc": ""
+  },
+  "model list": {
+    "group": "model",
+    "action": "list",
+    "name": "数据模型列表",
+    "method": "GET",
+    "path": "/open/models/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "项目Code，project_id和project_code二选一即可. 优先project_id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "none",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "model detail": {
+    "group": "model",
+    "action": "detail",
+    "name": "获取多条数据模型详情",
+    "method": "POST",
+    "path": "/open/models/details",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\":\"{{project_code}}\",  \n    \"model_ids\": [ \n    ],\r\n    \"names\":[ \n        \"A\",\r\n        \"A-1\"\r\n    ]\r\n}",
+    "desc": ""
+  },
+  "model delete": {
+    "group": "model",
+    "action": "delete",
+    "name": "删除数据模型",
+    "method": "POST",
+    "path": "/open/models/delete",
+    "query": [],
+    "bodyMode": "json",
+    "bodyExample": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\":\"{{project_code}}\",  \n    \"model_ids\": [ \n    ],\r\n    \"names\":[ \n        \"A\"\r\n    ]\r\n}",
+    "desc": ""
+  },
+  "project members": {
+    "group": "project",
+    "action": "members",
+    "name": "获取项目成员列表",
+    "method": "GET",
+    "path": "/open/project/user/list",
+    "query": [
+      {
+        "name": "project_id",
+        "desc": "项目id",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      },
+      {
+        "name": "project_code",
+        "desc": "",
+        "required": false,
+        "default": null,
+        "hasDefault": false,
+        "inCodePair": true
+      }
+    ],
+    "bodyMode": "json",
+    "bodyExample": "",
+    "desc": ""
+  },
+  "api create": {
+    "group": "api",
+    "action": "create",
+    "name": "创建接口（多类型）",
+    "method": "POST",
+    "path": "/open/apis/create",
+    "query": [],
+    "bodyMode": "json",
+    "bodyTypes": {
+      "目录": "{\n  \"project_id\": \"{{project_id}}\",\n  \"project_code\": \"{{project_code}}\",\n  \"parent_id\": \"0\",\n  \"target_type\": \"folder\",\n  \"name\": \"目录\",\n  \"server_id\": \"1\",\n  \"description\": \"\",\n  \"request\": {\n    \"header\": {\n      \"parameter\": [\n        {\n          \"description\": \"\",\n          \"field_type\": \"string\",\n          \"is_checked\": 1,\n          \"key\": \"key1\",\n          \"not_null\": 1,\n          \"value\": \"\",\n          \"schema\": {\n            \"type\": \"string\"\n          }\n        }\n      ]\n    },\n    \"query\": {\n      \"parameter\": []\n    },\n    \"body\": {\n      \"parameter\": []\n    },\n    \"cookie\": {\n      \"parameter\": []\n    },\n    \"auth\": {\n      \"type\": \"inherit\",\n      \"kv\": {\n        \"key\": \"\",\n        \"value\": \"\",\n        \"in\": \"header\"\n      },\n      \"bearer\": {\n        \"key\": \"\"\n      },\n      \"basic\": {\n        \"username\": \"\",\n        \"password\": \"\"\n      },\n      \"digest\": {\n        \"username\": \"\",\n        \"password\": \"\",\n        \"realm\": \"\",\n        \"nonce\": \"\",\n        \"algorithm\": \"MD5\",\n        \"qop\": \"\",\n        \"nc\": \"\",\n        \"cnonce\": \"\",\n        \"opaque\": \"\",\n        \"disableRetryRequest\": false\n      },\n      \"oauth1\": {\n        \"consumerKey\": \"\",\n        \"consumerSecret\": \"\",\n        \"signatureMethod\": \"HMAC-SHA1\",\n        \"addEmptyParamsToSign\": true,\n        \"includeBodyHash\": true,\n        \"addParamsToHeader\": false,\n        \"realm\": \"\",\n        \"version\": \"1.0\",\n        \"nonce\": \"\",\n        \"timestamp\": \"\",\n        \"verifier\": \"\",\n        \"callback\": \"\",\n        \"tokenSecret\": \"\",\n        \"token\": \"\",\n        \"disableHeaderEncoding\": false\n      },\n      \"hawk\": {\n        \"authId\": \"\",\n        \"authKey\": \"\",\n        \"algorithm\": \"\",\n        \"user\": \"\",\n        \"nonce\": \"\",\n        \"extraData\": \"\",\n        \"app\": \"\",\n        \"delegation\": \"\",\n        \"timestamp\": \"\",\n        \"includePayloadHash\": false\n      },\n      \"awsv4\": {\n        \"accessKey\": \"\",\n        \"secretKey\": \"\",\n        \"region\": \"\",\n        \"service\": \"\",\n        \"sessionToken\": \"\",\n        \"addAuthDataToQuery\": false\n      },\n      \"ntlm\": {\n        \"username\": \"\",\n        \"password\": \"\",\n        \"domain\": \"\",\n        \"workstation\": \"\",\n        \"disableRetryRequest\": false\n      },\n      \"edgegrid\": {\n        \"accessToken\": \"\",\n        \"clientToken\": \"\",\n        \"clientSecret\": \"\",\n        \"nonce\": \"\",\n        \"timestamp\": \"\",\n        \"baseURi\": \"\",\n        \"headersToSign\": \"\"\n      },\n      \"noauth\": {},\n      \"jwt\": {\n        \"addTokenTo\": \"header\",\n        \"algorithm\": \"HS256\",\n        \"secret\": \"\",\n        \"isSecretBase64Encoded\": false,\n        \"payload\": \"\",\n        \"headerPrefix\": \"Bearer\",\n        \"queryParamKey\": \"token\",\n        \"header\": \"\"\n      },\n      \"asap\": {\n        \"alg\": \"HS256\",\n        \"iss\": \"\",\n        \"aud\": \"\",\n        \"kid\": \"\",\n        \"privateKey\": \"\",\n        \"sub\": \"\",\n        \"claims\": \"\",\n        \"exp\": \"\"\n      }\n    },\n    \"pre_tasks\": [\n      {\n        \"type\": \"customScript\",\n        \"enabled\": 1,\n        \"data\": \"apt.environment.set(\\\"key\\\", \\\"value\\\");\",\n        \"name\": \"自定义脚本\"\n      }\n    ],\n    \"post_tasks\": []\n  }\n}",
+      "http": "{\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"target_type\": \"api\",\n\t\"parent_id\": \"0\",\n\t\"name\": \"新建接口\",\n\t\"mark_id\": \"1\",\n\t\"method\": \"GET\", \n\t\"url\": \"\", \n\t\"protocol\": \"http/1.1\",\n\t\"description\": \"\",\n\t\"request\": {\n\t\t\"auth\": {\n\t\t\t\"type\": \"noauth\",\n\t\t\t\"kv\": {\n\t\t\t\t\"key\": \"\",\n\t\t\t\t\"value\": \"\"\n\t\t\t},\n\t\t\t\"bearer\": {\n\t\t\t\t\"key\": \"\"\n\t\t\t},\n\t\t\t\"basic\": {\n\t\t\t\t\"username\": \"\",\n\t\t\t\t\"password\": \"\"\n\t\t\t},\n\t\t\t\"digest\": {\n\t\t\t\t\"username\": \"\",\n\t\t\t\t\"password\": \"\",\n\t\t\t\t\"realm\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"algorithm\": \"\",\n\t\t\t\t\"qop\": \"\",\n\t\t\t\t\"nc\": \"\",\n\t\t\t\t\"cnonce\": \"\",\n\t\t\t\t\"opaque\": \"\"\n\t\t\t},\n\t\t\t\"hawk\": {\n\t\t\t\t\"authId\": \"\",\n\t\t\t\t\"authKey\": \"\",\n\t\t\t\t\"algorithm\": \"\",\n\t\t\t\t\"user\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"extraData\": \"\",\n\t\t\t\t\"app\": \"\",\n\t\t\t\t\"delegation\": \"\",\n\t\t\t\t\"timestamp\": \"\",\n\t\t\t\t\"includePayloadHash\": 0\n\t\t\t},\n\t\t\t\"awsv4\": {\n\t\t\t\t\"accessKey\": \"\",\n\t\t\t\t\"secretKey\": \"\",\n\t\t\t\t\"region\": \"\",\n\t\t\t\t\"service\": \"\",\n\t\t\t\t\"sessionToken\": \"\",\n\t\t\t\t\"addAuthDataToQuery\": 0\n\t\t\t},\n\t\t\t\"ntlm\": {\n\t\t\t\t\"username\": \"\",\n\t\t\t\t\"password\": \"\",\n\t\t\t\t\"domain\": \"\",\n\t\t\t\t\"workstation\": \"\",\n\t\t\t\t\"disableRetryRequest\": 0\n\t\t\t},\n\t\t\t\"edgegrid\": {\n\t\t\t\t\"accessToken\": \"\",\n\t\t\t\t\"clientToken\": \"\",\n\t\t\t\t\"clientSecret\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"timestamp\": \"\",\n\t\t\t\t\"baseURi\": \"\",\n\t\t\t\t\"headersToSign\": \"\"\n\t\t\t},\n\t\t\t\"oauth1\": {\n\t\t\t\t\"consumerKey\": \"\",\n\t\t\t\t\"consumerSecret\": \"\",\n\t\t\t\t\"signatureMethod\": \"\",\n\t\t\t\t\"addEmptyParamsToSign\": 0,\n\t\t\t\t\"includeBodyHash\": 0,\n\t\t\t\t\"addParamsToHeader\": 0,\n\t\t\t\t\"realm\": \"\",\n\t\t\t\t\"version\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"timestamp\": \"\",\n\t\t\t\t\"verifier\": \"\",\n\t\t\t\t\"callback\": \"\",\n\t\t\t\t\"tokenSecret\": \"\",\n\t\t\t\t\"token\": \"\"\n\t\t\t},\n\t\t\t\"oauth2\": {\n\t\t\t\t\"addTokenTo\": \"header\",\n\t\t\t\t\"access_token\": \"123\",\n\t\t\t\t\"headerPrefix\": \"Bearer\",\n\t\t\t\t\"grant_type\": \"authorization_code\",\n\t\t\t\t\"redirect_uri\": \"\",\n\t\t\t\t\"authUrl\": \"\",\n\t\t\t\t\"accessTokenUrl\": \"\",\n\t\t\t\t\"clientId\": \"\",\n\t\t\t\t\"clientSecret\": \"\",\n\t\t\t\t\"challengeAlgorithm\": \"S256\",\n\t\t\t\t\"scope\": \"\",\n\t\t\t\t\"state\": \"\",\n\t\t\t\t\"client_authentication\": \"header\",\n\t\t\t\t\"refreshTokenUrl\": \"\",\n\t\t\t\t\"authRequestParams\": null,\n\t\t\t\t\"tokenRequestParams\": null,\n\t\t\t\t\"refreshRequestParams\": null\n\t\t\t}\n\t\t},\n\t\t\"body\": {\n\t\t\t\"mode\": \"none\",\n\t\t\t\"parameter\": [],\n\t\t\t\"raw\": \"\",\n\t\t\t\"raw_parameter\": [],\n\t\t\t\"raw_schema\": {\n\t\t\t\t\"type\": \"object\"\n\t\t\t},\n\t\t\t\"binary\": null\n\t\t},\n\t\t\"pre_tasks\": [],\n\t\t\"post_tasks\": [],\n\t\t\"header\": {\n\t\t\t\"parameter\": [\n\t\t\t\t{\n\t\t\t\t\t\"param_id\": \"26d3caf4f83001\",\n\t\t\t\t\t\"description\": \"\",\n\t\t\t\t\t\"field_type\": \"string\",\n\t\t\t\t\t\"is_checked\": 1,\n\t\t\t\t\t\"key\": \"\",\n\t\t\t\t\t\"not_null\": 1,\n\t\t\t\t\t\"value\": \"\"\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t\"query\": {\n\t\t\t\"parameter\": []\n\t\t},\n\t\t\"cookie\": {\n\t\t\t\"parameter\": []\n\t\t},\n\t\t\"restful\": {\n\t\t\t\"parameter\": []\n\t\t}\n\t},\n\t\"response\": {\n\t\t\"example\": [\n\t\t\t{\n\t\t\t\t\"example_id\": \"1\",\n\t\t\t\t\"raw\": \"\",\n\t\t\t\t\"raw_parameter\": [],\n\t\t\t\t\"expect\": {\n\t\t\t\t\t\"name\": \"成功\",\n\t\t\t\t\t\"is_default\": 1,\n\t\t\t\t\t\"code\": \"200\",\n\t\t\t\t\t\"content_type\": \"json\",\n\t\t\t\t\t\"verify_type\": \"schema\",\n\t\t\t\t\t\"mock\": \"\",\n\t\t\t\t\t\"schema\": {}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"example_id\": \"2\",\n\t\t\t\t\"raw\": \"\",\n\t\t\t\t\"raw_parameter\": [],\n\t\t\t\t\"expect\": {\n\t\t\t\t\t\"name\": \"失败\",\n\t\t\t\t\t\"is_default\": -1,\n\t\t\t\t\t\"code\": \"404\",\n\t\t\t\t\t\"content_type\": \"json\",\n\t\t\t\t\t\"verify_type\": \"schema\",\n\t\t\t\t\t\"mock\": \"\",\n\t\t\t\t\t\"schema\": {}\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"is_check_result\": 1\n\t},\n\t\"attribute_info\": {},\n\t\"tags\": [\n\t\t\"pipi\",\n\t\t\"pizi1\",\n\t\t\"pizi2\",\n\t\t\"pizi3\"\n\t]\n}",
+      "sse": "{\n\t\"project_id\": \"{{project_id}}\",\n\t\"project_code\": \"{{project_code}}\",\n\t\"target_type\": \"sse\",\n\t\"parent_id\": \"0\",\n\t\"name\": \"新建接口\",\n\t\"mark_id\": \"1\",\n\t\"method\": \"GET\", \n\t\"url\": \"\", \n\t\"protocol\": \"http/1.1\",\n\t\"description\": \"\",\n\t\"request\": {\n\t\t\"auth\": {\n\t\t\t\"type\": \"noauth\",\n\t\t\t\"kv\": {\n\t\t\t\t\"key\": \"\",\n\t\t\t\t\"value\": \"\"\n\t\t\t},\n\t\t\t\"bearer\": {\n\t\t\t\t\"key\": \"\"\n\t\t\t},\n\t\t\t\"basic\": {\n\t\t\t\t\"username\": \"\",\n\t\t\t\t\"password\": \"\"\n\t\t\t},\n\t\t\t\"digest\": {\n\t\t\t\t\"username\": \"\",\n\t\t\t\t\"password\": \"\",\n\t\t\t\t\"realm\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"algorithm\": \"\",\n\t\t\t\t\"qop\": \"\",\n\t\t\t\t\"nc\": \"\",\n\t\t\t\t\"cnonce\": \"\",\n\t\t\t\t\"opaque\": \"\"\n\t\t\t},\n\t\t\t\"hawk\": {\n\t\t\t\t\"authId\": \"\",\n\t\t\t\t\"authKey\": \"\",\n\t\t\t\t\"algorithm\": \"\",\n\t\t\t\t\"user\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"extraData\": \"\",\n\t\t\t\t\"app\": \"\",\n\t\t\t\t\"delegation\": \"\",\n\t\t\t\t\"timestamp\": \"\",\n\t\t\t\t\"includePayloadHash\": 0\n\t\t\t},\n\t\t\t\"awsv4\": {\n\t\t\t\t\"accessKey\": \"\",\n\t\t\t\t\"secretKey\": \"\",\n\t\t\t\t\"region\": \"\",\n\t\t\t\t\"service\": \"\",\n\t\t\t\t\"sessionToken\": \"\",\n\t\t\t\t\"addAuthDataToQuery\": 0\n\t\t\t},\n\t\t\t\"ntlm\": {\n\t\t\t\t\"username\": \"\",\n\t\t\t\t\"password\": \"\",\n\t\t\t\t\"domain\": \"\",\n\t\t\t\t\"workstation\": \"\",\n\t\t\t\t\"disableRetryRequest\": 0\n\t\t\t},\n\t\t\t\"edgegrid\": {\n\t\t\t\t\"accessToken\": \"\",\n\t\t\t\t\"clientToken\": \"\",\n\t\t\t\t\"clientSecret\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"timestamp\": \"\",\n\t\t\t\t\"baseURi\": \"\",\n\t\t\t\t\"headersToSign\": \"\"\n\t\t\t},\n\t\t\t\"oauth1\": {\n\t\t\t\t\"consumerKey\": \"\",\n\t\t\t\t\"consumerSecret\": \"\",\n\t\t\t\t\"signatureMethod\": \"\",\n\t\t\t\t\"addEmptyParamsToSign\": 0,\n\t\t\t\t\"includeBodyHash\": 0,\n\t\t\t\t\"addParamsToHeader\": 0,\n\t\t\t\t\"realm\": \"\",\n\t\t\t\t\"version\": \"\",\n\t\t\t\t\"nonce\": \"\",\n\t\t\t\t\"timestamp\": \"\",\n\t\t\t\t\"verifier\": \"\",\n\t\t\t\t\"callback\": \"\",\n\t\t\t\t\"tokenSecret\": \"\",\n\t\t\t\t\"token\": \"\"\n\t\t\t}\n\t\t},\n\t\t\"body\": {\n\t\t\t\"mode\": \"none\",\n\t\t\t\"parameter\": [],\n\t\t\t\"raw\": \"\",\n\t\t\t\"raw_parameter\": [],\n\t\t\t\"raw_schema\": {\n\t\t\t\t\"type\": \"object\"\n\t\t\t},\n\t\t\t\"binary\": null\n\t\t},\n\t\t\"pre_tasks\": [],\n\t\t\"post_tasks\": [],\n\t\t\"header\": {\n\t\t\t\"parameter\": [\n\t\t\t\t{\n\t\t\t\t\t\"param_id\": \"26d3caf4f83001\",\n\t\t\t\t\t\"description\": \"\",\n\t\t\t\t\t\"field_type\": \"string\",\n\t\t\t\t\t\"is_checked\": 1,\n\t\t\t\t\t\"key\": \"\",\n\t\t\t\t\t\"not_null\": 1,\n\t\t\t\t\t\"value\": \"\"\n\t\t\t\t}\n\t\t\t]\n\t\t},\n\t\t\"query\": {\n\t\t\t\"parameter\": []\n\t\t},\n\t\t\"cookie\": {\n\t\t\t\"parameter\": []\n\t\t},\n\t\t\"restful\": {\n\t\t\t\"parameter\": []\n\t\t}\n\t},\n\t\"response\": {\n\t\t\"example\": [\n\t\t\t{\n\t\t\t\t\"example_id\": \"1\",\n\t\t\t\t\"raw\": \"\",\n\t\t\t\t\"raw_parameter\": [],\n\t\t\t\t\"expect\": {\n\t\t\t\t\t\"name\": \"成功\",\n\t\t\t\t\t\"is_default\": 1,\n\t\t\t\t\t\"code\": \"200\",\n\t\t\t\t\t\"content_type\": \"json\",\n\t\t\t\t\t\"verify_type\": \"schema\",\n\t\t\t\t\t\"mock\": \"\",\n\t\t\t\t\t\"schema\": {}\n\t\t\t\t}\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"example_id\": \"2\",\n\t\t\t\t\"raw\": \"\",\n\t\t\t\t\"raw_parameter\": [],\n\t\t\t\t\"expect\": {\n\t\t\t\t\t\"name\": \"失败\",\n\t\t\t\t\t\"is_default\": -1,\n\t\t\t\t\t\"code\": \"404\",\n\t\t\t\t\t\"content_type\": \"json\",\n\t\t\t\t\t\"verify_type\": \"schema\",\n\t\t\t\t\t\"mock\": \"\",\n\t\t\t\t\t\"schema\": {}\n\t\t\t\t}\n\t\t\t}\n\t\t],\n\t\t\"is_check_result\": 1\n\t},\n\t\"attribute_info\": {},\n\t\"tags\": [\n\t\t\"pipi\",\n\t\t\"pizi1\",\n\t\t\"pizi2\",\n\t\t\"pizi3\"\n\t]\n}",
+      "markdown": "{\n  \"project_id\": \"{{project_id}}\",\n  \"project_code\": \"{{project_code}}\",\n  \"parent_id\": \"0\",\n  \"target_type\": \"doc\",\n  \"name\": \"新建文本\",\n  \"mark_id\": \"1\",\n  \"tags\": [],\n  \"description\": \"\"\n}",
+      "tcp-client": "{\n  \"project_id\": \"{{project_id}}\",\n  \"project_code\": \"{{project_code}}\",\n  \"parent_id\": \"0\",\n  \"target_type\": \"socket\",\n  \"name\": \"未命名TCP客户端\",\n  \"mark_id\": \"1\",\n  \"method\": \"TCP\",\n  \"description\": \"\",\n  \"url\": \"\",\n  \"request\": {\n    \"timeout\": 10,\n    \"end_func\": {\n      \"name\": \"none\",\n      \"option\": \"\"\n    }\n  }\n}",
+      "websocket": "{\n    \"project_id\": \"{{project_id}}\",\n    \"project_code\": \"{{project_code}}\",\n    \"parent_id\": \"0\",\n    \"target_type\": \"websocket2\",\n    \"name\": \"未命名WS链接\",\n    \"mark_id\": \"1\",\n    \"request\": {\n        \"cookie\": {\n            \"parameter\": []\n        },\n        \"header\": {\n            \"parameter\": []\n        },\n        \"query\": {\n            \"parameter\": []\n        }\n    },\n    \"message\": [\n        {\n            \"name\": \"消息\",\n            \"param_id\": \"f74d60fbac000\",\n            \"request\": {\n                \"mode\": \"text\",\n                \"raw\": \"\",\n                \"raw_parameter\": [],\n                \"raw_schema\": {\n                    \"type\": \"object\"\n                }\n            },\n            \"response\": {\n                \"mode\": \"text\",\n                \"raw\": \"\",\n                \"raw_parameter\": [],\n                \"raw_schema\": {\n                    \"type\": \"object\"\n                }\n            }\n        }\n    ],\n    \"url\": \"\",\n    \"description\": \"\",\n    \"tags\": [],\n    \"config\": {\n        \"certificate_verification\": -1,\n        \"information_size\": 5,\n        \"reconnect_num\": 5,\n        \"reconnect_time\": 5000,\n        \"shake_hands_timeout\": 0\n    }\n}",
+      "tcp": "{\n  \"project_id\": \"{{project_id}}\",\n  \"project_code\": \"{{project_code}}\",\n  \"parent_id\": \"fa9b536fac416\",\n  \"target_type\": \"socket_method\",\n  \"name\": \"未命名TCP方法\",\n  \"mark_id\": \"1\",\n  \"method\": \"TCP\",\n  \"description\": \"\",\n  \"request\": {\n    \"body\": {\n      \"mode\": \"xml\",\n      \"parameter\": [\n        {\n          \"definition\": \"\",\n          \"key\": \"\",\n          \"value\": \"\",\n          \"description\": \"\",\n          \"is_checked\": 1,\n          \"param_id\": \"faa8520bac41a\",\n          \"static\": true,\n          \"rules\": {\n            \"common\": \"\",\n            \"content_type\": \"custom\",\n            \"custom\": \"\",\n            \"fill_type\": \"\",\n            \"length\": 0,\n            \"delimiter\": \"\"\n          }\n        }\n      ],\n      \"raw\": \"\",\n      \"raw_parameter\": [],\n      \"raw_schema\": {\n        \"type\": \"object\"\n      }\n    },\n    \"post_tasks\": [],\n    \"configs\": {\n      \"charset\": \"utf8\",\n      \"func\": {\n        \"request\": [],\n        \"response\": []\n      }\n    }\n  },\n  \"response\": {\n    \"is_check_result\": 1,\n    \"example\": [\n      {\n        \"example_id\": \"1\",\n        \"raw\": \"\",\n        \"raw_parameter\": [],\n        \"headers\": [],\n        \"expect\": {\n          \"name\": \"成功\",\n          \"is_default\": 1,\n          \"code\": \"200\",\n          \"sleep\": 0,\n          \"content_type\": \"json\",\n          \"verify_type\": \"schema\",\n          \"mock\": \"\",\n          \"schema\": {\n            \"type\": \"object\",\n            \"properties\": {}\n          }\n        }\n      },\n      {\n        \"example_id\": \"2\",\n        \"raw\": \"\",\n        \"raw_parameter\": [],\n        \"headers\": [],\n        \"expect\": {\n          \"name\": \"失败\",\n          \"is_default\": -1,\n          \"code\": \"404\",\n          \"sleep\": 0,\n          \"content_type\": \"json\",\n          \"verify_type\": \"schema\",\n          \"mock\": \"\",\n          \"schema\": {\n            \"type\": \"object\",\n            \"properties\": {}\n          }\n        }\n      }\n    ]\n  },\n  \"tags\": []\n}",
+      "socketio": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\": \"{{project_code}}\",\r\n    \"parent_id\": \"0\",\r\n    \"target_type\": \"socketio\",\r\n    \"name\": \"未命名Socket.IO会话\",\r\n    \"mark_id\": \"1\",\r\n    \"request\": {\r\n        \"cookie\": {\r\n            \"parameter\": []\r\n        },\r\n        \"header\": {\r\n            \"parameter\": []\r\n        },\r\n        \"query\": {\r\n            \"parameter\": []\r\n        },\r\n        \"event\": {\r\n            \"parameter\": [\r\n                {\r\n                    \"param_id\": \"26d3caf4f83001\",\r\n                    \"description\": \"\",\r\n                    \"field_type\": \"string\",\r\n                    \"is_checked\": 1,\r\n                    \"key\": \"\",\r\n                    \"not_null\": 1,\r\n                    \"value\": \"\"\r\n                }\r\n            ]\r\n        }\r\n    },\r\n    \"message\": [\r\n        {\r\n            \"name\": \"消息\",\r\n            \"param_id\": \"f74d60fbac001\",\r\n            \"request\": {\r\n                \"mode\": \"text\",\r\n                \"raw\": \"\",\r\n                \"raw_parameter\": [],\r\n                \"raw_schema\": {\r\n                    \"type\": \"object\"\r\n                }\r\n            },\r\n            \"response\": {\r\n                \"mode\": \"text\",\r\n                \"raw\": \"\",\r\n                \"raw_parameter\": [],\r\n                \"raw_schema\": {\r\n                    \"type\": \"object\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"url\": \"\",\r\n    \"description\": \"\",\r\n    \"tags\": [],\r\n    \"config\": {\r\n        \"reconnect_num\": 5,\r\n        \"reconnect_time\": 5000,\r\n        \"shake_hands_path\": \"/socket.io\",\r\n        \"shake_hands_timeout\": 0,\r\n        \"socket_version\": \"v4\",\r\n        \"certificate_verification\": -1\r\n    }\r\n}",
+      "graphql": "{\r\n    \"project_id\": \"{{project_id}}\",\r\n    \"project_code\": \"{{project_code}}\",\r\n    \"parent_id\": \"0\",\r\n    \"target_type\": \"graphql\",\r\n    \"name\": \"未命名GraphQL查询\",\r\n    \"url\": \"\",\r\n    \"mark_id\": \"1\",\r\n    \"description\": \"\",\r\n    \"request\": {\r\n        \"auth\": {\r\n            \"type\": \"inherit\",\r\n            \"kv\": {\r\n                \"key\": \"\",\r\n                \"value\": \"\",\r\n                \"in\": \"header\"\r\n            },\r\n            \"bearer\": {\r\n                \"key\": \"\"\r\n            },\r\n            \"basic\": {\r\n                \"username\": \"\",\r\n                \"password\": \"\"\r\n            },\r\n            \"digest\": {\r\n                \"username\": \"\",\r\n                \"password\": \"\",\r\n                \"realm\": \"\",\r\n                \"nonce\": \"\",\r\n                \"algorithm\": \"\",\r\n                \"qop\": \"\",\r\n                \"nc\": \"\",\r\n                \"cnonce\": \"\",\r\n                \"opaque\": \"\"\r\n            },\r\n            \"hawk\": {\r\n                \"authId\": \"\",\r\n                \"authKey\": \"\",\r\n                \"algorithm\": \"\",\r\n                \"user\": \"\",\r\n                \"nonce\": \"\",\r\n                \"extraData\": \"\",\r\n                \"default\": \"\",\r\n                \"delegation\": \"\",\r\n                \"timestamp\": \"\",\r\n                \"includePayloadHash\": false\r\n            },\r\n            \"awsv4\": {\r\n                \"accessKey\": \"\",\r\n                \"secretKey\": \"\",\r\n                \"region\": \"\",\r\n                \"service\": \"\",\r\n                \"sessionToken\": \"\",\r\n                \"addAuthDataToQuery\": false\r\n            },\r\n            \"ntlm\": {\r\n                \"username\": \"\",\r\n                \"password\": \"\",\r\n                \"entity\": \"\",\r\n                \"workstation\": \"\",\r\n                \"disableRetryRequest\": false\r\n            },\r\n            \"edgegrid\": {\r\n                \"accessToken\": \"\",\r\n                \"clientToken\": \"\",\r\n                \"clientSecret\": \"\",\r\n                \"nonce\": \"\",\r\n                \"timestamp\": \"\",\r\n                \"baseURi\": \"\",\r\n                \"headersToSign\": \"\"\r\n            },\r\n            \"oauth1\": {\r\n                \"consumerKey\": \"\",\r\n                \"consumerSecret\": \"\",\r\n                \"signatureMethod\": \"HMAC-SHA1\",\r\n                \"addEmptyParamsToSign\": true,\r\n                \"includeBodyHash\": true,\r\n                \"addParamsToHeader\": false,\r\n                \"disableHeaderEncoding\": false,\r\n                \"realm\": \"\",\r\n                \"version\": \"1.0\",\r\n                \"nonce\": \"\",\r\n                \"timestamp\": \"\",\r\n                \"verifier\": \"\",\r\n                \"callback\": \"\",\r\n                \"tokenSecret\": \"\",\r\n                \"token\": \"\"\r\n            },\r\n            \"jwt\": {\r\n                \"addTokenTo\": \"header\",\r\n                \"algorithm\": \"HS256\",\r\n                \"secret\": \"\",\r\n                \"isSecretBase64Encoded\": false,\r\n                \"payload\": \"\",\r\n                \"headerPrefix\": \"Bearer\",\r\n                \"queryParamKey\": \"token\",\r\n                \"header\": \"\"\r\n            },\r\n            \"asap\": {\r\n                \"alg\": \"HS256\",\r\n                \"iss\": \"\",\r\n                \"aud\": \"\",\r\n                \"kid\": \"\",\r\n                \"privateKey\": \"\",\r\n                \"sub\": \"\",\r\n                \"claims\": \"\",\r\n                \"exp\": \"\"\r\n            }\r\n        },\r\n        \"body\": {\r\n            \"query_schema\": {},\r\n            \"query_list\": [\r\n                {\r\n                    \"param_id\": \"e6319237e9025\",\r\n                    \"name\": \"自定义查询\",\r\n                    \"query\": \"\",\r\n                    \"variables\": \"\",\r\n                    \"response\": {\r\n                        \"mode\": \"json\",\r\n                        \"raw\": \"\",\r\n                        \"raw_parameter\": [],\r\n                        \"raw_schema\": {\r\n                            \"type\": \"object\"\r\n                        }\r\n                    }\r\n                }\r\n            ]\r\n        },\r\n        \"cookie\": {\r\n            \"parameter\": []\r\n        },\r\n        \"pre_tasks\": [],\r\n        \"post_tasks\": [],\r\n        \"header\": {\r\n            \"parameter\": []\r\n        }\r\n    },\r\n    \"response\": {\r\n        \"example\": [\r\n            {\r\n                \"example_id\": \"1\",\r\n                \"raw\": \"\",\r\n                \"raw_parameter\": [],\r\n                \"headers\": [],\r\n                \"expect\": {\r\n                    \"code\": \"200\",\r\n                    \"content_type\": \"json\",\r\n                    \"is_default\": 1,\r\n                    \"mock\": \"\",\r\n                    \"name\": \"成功\",\r\n                    \"schema\": {\r\n                        \"type\": \"object\",\r\n                        \"properties\": {}\r\n                    },\r\n                    \"verify_type\": \"schema\",\r\n                    \"sleep\": 0\r\n                }\r\n            },\r\n            {\r\n                \"example_id\": \"2\",\r\n                \"raw\": \"\",\r\n                \"raw_parameter\": [],\r\n                \"headers\": [],\r\n                \"expect\": {\r\n                    \"code\": \"404\",\r\n                    \"content_type\": \"json\",\r\n                    \"is_default\": -1,\r\n                    \"mock\": \"\",\r\n                    \"name\": \"失败\",\r\n                    \"schema\": {\r\n                        \"type\": \"object\",\r\n                        \"properties\": {}\r\n                    },\r\n                    \"verify_type\": \"schema\",\r\n                    \"sleep\": 0\r\n                }\r\n            }\r\n        ],\r\n        \"is_check_result\": 1\r\n    },\r\n    \"tags\": []\r\n}"
+    },
+    "typeFlag": true,
+    "desc": "创建接口，支持目录/HTTP/SSE/Markdown/TCP客户端/Websocket/TCP方法/SocketIO/Graphql"
+  }
+}
