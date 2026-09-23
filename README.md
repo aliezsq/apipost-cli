@@ -1,13 +1,20 @@
-# apipost-cli
+# apipost-open-cli
 
 Apipost Open API V2（SaaS 版）的命令行客户端。用一条命令程序化管理 Apipost 项目：项目/接口 CRUD、自动化测试报告、环境与数据模型、团队成员、全局参数等，覆盖全部 **55 个接口（47 条命令）**。
+
+> 与官方 `apipost-cli` 的区别：官方那个是跑接口用例/测试用例的 CI 运行器（`apipost run <ci_url>`），本工具是 **Open API V2 的资源管理**（建接口、管环境、管数据模型、查测试报告），两者不重叠。为避免 bin 冲突，本工具命令名是 `apipost-open`。
 
 ## 安装
 
 ```bash
-cd apipost-cli
-npm install
-npm link          # 注册全局命令 apipost（或 npm install -g .）
+# 从 npm 安装（推荐）
+npm install -g apipost-open-cli
+
+# 或直接从 GitHub 装（零发布零登录）
+npm install -g github:aliezsq/apipost-cli
+
+# 或本地源码安装
+cd apipost-cli && npm link
 ```
 
 要求 Node.js ≥ 18（内置 fetch）。
@@ -20,10 +27,10 @@ Apipost 客户端 → 工作台 → 项目设置 → 对外能力 → open API�
 
 ```bash
 export APIPOST_TOKEN=你的token
-apipost team list
+apipost-open team list
 
 # 或每次带参数
-apipost --token 你的token team list
+apipost-open --token 你的token team list
 ```
 
 ## 全局参数
@@ -42,17 +49,17 @@ apipost --token 你的token team list
 ## 命令分组
 
 ```
-apipost team list                      我的群组列表
-apipost user info                      获取个人信息
-apipost project create|list|info|members
-apipost api list|detail|create|update|delete|set-mark|sample-list|sample-create
-apipost test list|delete|report-list|report-detail
-apipost model list|detail|create|update|delete
-apipost attribute create|update|list|detail|delete
-apipost mark create|update|list|delete|set-default
-apipost env create|update|delete|list|detail|move
-apipost server create|update|delete|list|detail|move
-apipost global-param detail|save
+apipost-open team list                      我的群组列表
+apipost-open user info                      获取个人信息
+apipost-open project create|list|info|members
+apipost-open api list|detail|create|update|delete|set-mark|sample-list|sample-create
+apipost-open test list|delete|report-list|report-detail
+apipost-open model list|detail|create|update|delete
+apipost-open attribute create|update|list|detail|delete
+apipost-open mark create|update|list|delete|set-default
+apipost-open env create|update|delete|list|detail|move
+apipost-open server create|update|delete|list|detail|move
+apipost-open global-param detail|save
 ```
 
 每个子命令都有 `--help`，会列出该接口的 query 参数、是否必填、以及默认值。
@@ -61,20 +68,20 @@ apipost global-param detail|save
 
 ```bash
 # 列出我的项目（action 默认 0=全部；team_id/team_code 二选一）
-apipost project list --team-id 4381362a5401000
+apipost-open project list --team-id 4381362a5401000
 
 # 项目详情（project_id/project_code 二选一，project_id 优先）
-apipost project info --project-id 57ddb72dc088000
+apipost-open project info --project-id 57ddb72dc088000
 
 # 创建项目：扁平 body 直接给标量 flag
-apipost project create --team-id 4381362a5401000 --name 新项目 --intro 描述
+apipost-open project create --team-id 4381362a5401000 --name 新项目 --intro 描述
 
 # 复杂 body（接口创建/修改等）用 --data 或 @文件
-apipost api create --data @/path/to/api.json
-apipost api update --data '{"project_id":"...","target_id":"...","name":"改名"}'
+apipost-open api create --data @/path/to/api.json
+apipost-open api update --data '{"project_id":"...","target_id":"...","name":"改名"}'
 
 # 预览某接口的请求，不发送
-apipost api create --type http --dry-run
+apipost-open api create --type http --dry-run
 ```
 
 ## 请求体约定
@@ -96,10 +103,14 @@ apipost api create --type http --dry-run
 
 ## 能力边界
 
-V2 开放接口里自动化测试（`test`）只有 `list` / `delete` / `report-list` / `report-detail`，**没有创建或执行测试的接口**——「跑自动化测试」暂无法通过本 CLI 完成，需在客户端内触发。
+V2 开放接口里自动化测试（`test`）只有 `list` / `delete` / `report-list` / `report-detail`，**没有创建或执行测试的接口**——「跑自动化测试」暂无法通过本 CLI 完成，需在客户端内触发，或用官方 `apipost-cli` 的 `apipost run`。
 
 ## 说明
 
 - 接口定义来自 Apipost 导出的《开放接口文档 V2 版本（saas 版）》，解析后生成 `spec.json`（单一事实源）。
 - 文档里的示例 ID（如 `testing_id=2069ad04ec01000`）不会被当作默认值发出；只有真正的默认值（如 `action=0`）会在未传参时自动补上。
 - `team_id`/`team_code`、`project_id`/`project_code` 均为「二选一」参数，至少传一个即可。
+
+## License
+
+MIT

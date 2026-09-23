@@ -1,10 +1,10 @@
 {
-  "name": "apipost-cli",
+  "name": "apipost-open-cli",
   "version": "1.0.0",
   "description": "Apipost Open API V2 命令行客户端 —— 程序化管理 Apipost 项目/接口/自动化测试/环境/数据模型",
   "license": "MIT",
   "bin": {
-    "apipost": "bin/apipost.js"
+    "apipost-open": "bin/apipost.js"
   },
   "main": "lib/client.js",
   "files": [
