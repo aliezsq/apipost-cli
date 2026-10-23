@@ -80,7 +80,7 @@ function parseData(v) {
 
 const program = new Command();
 program
-  .name('apipost')
+  .name('apipost-open')
   .description('Apipost Open API V2 命令行客户端')
   .version(pkg.version);
 addGlobalOpts(program);

@@ -1,5 +1,8 @@
 # apipost-open-cli
 
+[![npm version](https://img.shields.io/npm/v/apipost-open-cli.svg)](https://www.npmjs.com/package/apipost-open-cli)
+[![license](https://img.shields.io/npm/l/apipost-open-cli.svg)](LICENSE)
+
 Apipost Open API V2（SaaS 版）的命令行客户端。用一条命令程序化管理 Apipost 项目：项目/接口 CRUD、自动化测试报告、环境与数据模型、团队成员、全局参数等，覆盖全部 **55 个接口（47 条命令）**。
 
 > 与官方 `apipost-cli` 的区别：官方那个是跑接口用例/测试用例的 CI 运行器（`apipost run <ci_url>`），本工具是 **Open API V2 的资源管理**（建接口、管环境、管数据模型、查测试报告），两者不重叠。为避免 bin 冲突，本工具命令名是 `apipost-open`。

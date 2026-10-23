@@ -2,6 +2,24 @@
   "name": "apipost-open-cli",
   "version": "1.0.0",
   "description": "Apipost Open API V2 命令行客户端 —— 程序化管理 Apipost 项目/接口/自动化测试/环境/数据模型",
+  "keywords": [
+    "apipost",
+    "apipost-open-api",
+    "api",
+    "cli",
+    "openapi",
+    "api-management",
+    "command-line"
+  ],
+  "homepage": "https://github.com/aliezsq/apipost-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliezsq/apipost-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aliezsq/apipost-cli/issues"
+  },
+  "author": "aliezsq",
   "license": "MIT",
   "bin": {
     "apipost-open": "bin/apipost.js"
@@ -11,7 +29,8 @@
     "bin",
     "lib",
     "spec.json",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"
@@ -21,5 +40,9 @@
   },
   "dependencies": {
     "commander": "^12.1.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }
